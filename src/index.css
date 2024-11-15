@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  transition: 0.3s;
+}
+.dashboard > .active {
+  background: rgba(0, 10, 27, 0.74) !important;
+  color: white !important;
+}
+.scroll-none::-webkit-scrollbar {
+  display: none;
+}
