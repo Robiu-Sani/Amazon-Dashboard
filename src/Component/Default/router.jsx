@@ -4,6 +4,7 @@ import ErrorPage from "./ErrorPage";
 import CommingSoon from "./CommingSoon";
 import Login from "../Pages/Authcations/Login";
 import CourierCheck from "../Pages/CourierCheck/CourierCheck";
+import OrderReport from "../Pages/OrderReport/OrderReport";
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/order-report",
-        element: <CommingSoon />,
+        element: <OrderReport />,
       },
       {
         path: "/order-traking",
