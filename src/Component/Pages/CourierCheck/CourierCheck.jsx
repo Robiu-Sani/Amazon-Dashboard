@@ -22,7 +22,7 @@ const CourierCheck = () => {
           },
         }
       );
-      setResponseData(response.data); // Set the API response data
+      setResponseData(response.data.courierData || {}); // Set the courier data from the response
       setError(null); // Clear any previous errors
     } catch (err) {
       console.error(err.message);
@@ -32,8 +32,8 @@ const CourierCheck = () => {
   };
 
   return (
-    <div className="flex  justify-center  bg-gray-100 px-4">
-      <div className="w-full max-w-md p-6 bg-white shadow-lg rounded-lg">
+    <div className="flex justify-center items-center bg-gray-100 ">
+      <div className="w-full  p-6 bg-white shadow-lg rounded-lg">
         <h1 className="text-2xl font-bold text-gray-800 text-center mb-6">
           Courier Check
         </h1>
@@ -52,13 +52,43 @@ const CourierCheck = () => {
         >
           Check Courier
         </button>
+
         <div className="mt-6">
           {responseData && (
-            <div className="bg-green-100 border border-green-300 text-green-800 p-4 rounded-md">
-              <h3 className="font-semibold">Response:</h3>
-              <pre className="mt-2 text-sm text-gray-700 overflow-auto">
-                {JSON.stringify(responseData, null, 2)}
-              </pre>
+            <div className="overflow-x-auto bg-white border border-gray-300 rounded-md p-4 mt-4">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                Courier Data
+              </h3>
+              <table className="w-full border text-center text-gray-800">
+                <thead>
+                  <tr className="bg-gray-200">
+                    <th className="py-2 px-4 border">Courier Name</th>
+                    <th className="py-2 px-4 border">Total Parcels</th>
+                    <th className="py-2 px-4 border">Successful Parcels</th>
+                    <th className="py-2 px-4 border">Cancelled Parcels</th>
+                    <th className="py-2 px-4 border">Success Ratio (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(responseData).map(([courier, data]) => (
+                    <tr key={courier} className="border-t">
+                      <td className="py-2 px-4 border capitalize">{courier}</td>
+                      <td className="py-2 px-4 border">
+                        {data?.total_parcel || 0}
+                      </td>
+                      <td className="py-2 px-4 border">
+                        {data?.success_parcel || 0}
+                      </td>
+                      <td className="py-2 px-4 border">
+                        {data?.cancelled_parcel || 0}
+                      </td>
+                      <td className="py-2 px-4 border">
+                        {data?.success_ratio || 0}%
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
           {error && <p className="text-red-600 text-sm mt-2">{error}</p>}

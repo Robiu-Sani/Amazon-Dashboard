@@ -68,7 +68,27 @@ export default function SiteNavBar({ handleCallNav }) {
   return (
     <div className="w-full h-full bg-white p-4 flex flex-col gap-5">
       <div className="w-full  border-b py-5">
-        <img src={"/fsd"} alt="amazon" className="mx-auto w-[80px] h-[80px]" />
+        <h2 className="text-2xl font-bold text-center">Relifemart</h2>
+        <div className=" flex w-full justify-center items-center gap-2">
+          <img
+            src={
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5gv6VVdtAGLqBK9MXIBOUGJ-hWeVdiiN-3Q&s"
+            }
+            alt="Relifemart"
+            className="mx-auto min-w-[50px] max-w-[51px] rounded-full min-h-[50px] max-h-[51px]"
+          />
+          <div className="w-full flex flex-col ">
+            <h3 className=" font-medium leading-[-8px] text-gray-600">
+              User name
+            </h3>
+            <small className="text-sm font-medium leading-[-12px] text-gray-600">
+              01*********
+            </small>{" "}
+            <small className="text-sm font-medium leading-[-12px] text-gray-600">
+              ID : 12354
+            </small>
+          </div>
+        </div>
       </div>
       <div className="w-full dashboard h-[calc(100vh-230px)] scroll-none overflow-y-scroll">
         {navItems.map((item, index) => (
@@ -83,10 +103,14 @@ export default function SiteNavBar({ handleCallNav }) {
                 onClick={() => toggleMenu(index)}
               >
                 <div className="w-full flex justify-between  items-center">
-                  <div className="flex gap-3  items-center">
+                  <NavLink
+                    to={item.path}
+                    onClick={() => handleCallNav(false)}
+                    className="flex gap-3  items-center"
+                  >
                     {item.icon}
                     {item.name}
-                  </div>
+                  </NavLink>
                   <MdArrowForwardIos
                     className={`transition-transform ${
                       openMenu[index] ? "rotate-90" : ""
