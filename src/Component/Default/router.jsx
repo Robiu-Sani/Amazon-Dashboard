@@ -3,6 +3,7 @@ import Root from "./Root";
 import ErrorPage from "./ErrorPage";
 import CommingSoon from "./CommingSoon";
 import Login from "../Pages/Authcations/Login";
+import CourierCheck from "../Pages/CourierCheck/CourierCheck";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/customer-checker",
-        element: <CommingSoon />,
+        element: <CourierCheck />,
       },
       {
         path: "/product-request",

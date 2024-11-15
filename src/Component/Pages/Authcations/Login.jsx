@@ -29,7 +29,7 @@ export default function Login() {
   };
 
   const RederectToHome = () => {
-    router("/home");
+    router("/dashboard");
   };
 
   return (
