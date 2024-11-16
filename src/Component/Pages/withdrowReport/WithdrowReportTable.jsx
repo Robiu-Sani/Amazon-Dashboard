@@ -89,7 +89,7 @@ export default function WithdrowReportTable() {
 
   return (
     <div className=" bg-gray-100">
-      <h2 className="font-semibold ">Withdraw Report</h2>
+      {/* <h2 className="font-semibold ">Withdraw Report</h2> */}
       <div className="overflow-x-auto bg-white border border-gray-300 rounded-lg">
         <table className="w-full text-center border-collapse">
           <thead>
