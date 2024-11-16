@@ -2,7 +2,7 @@ import { FaUsers } from "react-icons/fa";
 
 export default function AboutBanner() {
   return (
-    <div className="relative w-full mb-3 h-[200px] bg-gradient-to-r from-indigo-400 to-purple-500 rounded-md shadow-lg flex items-center justify-center overflow-hidden">
+    <div className="relative w-full mb-3 h-[150px] sm:h-[250px] bg-gradient-to-r from-indigo-400 to-purple-500 rounded-md shadow-lg flex items-center justify-center overflow-hidden">
       {/* Background Graphics */}
       <div className="absolute inset-0 opacity-20">
         <img

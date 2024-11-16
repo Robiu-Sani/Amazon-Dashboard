@@ -23,7 +23,7 @@ import { useState } from "react";
 
 const navItems = [
   { name: "Dashboard", path: "/dashboard", icon: <MdDashboard /> },
-  { name: "About Us", path: "/about-us", icon: <FaSteam /> },
+
   { name: "All Products", path: "/all-product", icon: <MdHome /> },
   { name: "Balance", path: "/balance", icon: <MdAccountBalance /> },
   {
@@ -56,6 +56,7 @@ const navItems = [
   { name: "Settings", path: "/settings", icon: <MdSettings /> },
   { name: "Service", path: "/service", icon: <MdBuildCircle /> },
   { name: "Support", path: "/support", icon: <MdSupportAgent /> },
+  { name: "About Us", path: "/about-us", icon: <FaSteam /> },
   { name: "Logout", path: "/logout", icon: <MdExitToApp /> },
 ];
 
