@@ -105,14 +105,14 @@ export default function SiteNavBar({ handleCallNav }) {
                 onClick={() => toggleMenu(index)}
               >
                 <div className="w-full flex justify-between  items-center">
-                  <NavLink
-                    to={item.path}
+                  <button
+                    // to={item.path}
                     onClick={() => handleCallNav(false)}
                     className="flex gap-3  items-center"
                   >
                     {item.icon}
                     {item.name}
-                  </NavLink>
+                  </button>
                   <MdArrowForwardIos
                     className={`transition-transform ${
                       openMenu[index] ? "rotate-90" : ""

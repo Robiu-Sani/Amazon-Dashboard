@@ -8,6 +8,16 @@ import OrderReport from "../Pages/OrderReport/OrderReport";
 import WithdrowReport from "../Pages/withdrowReport/withdrowReport";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import AllProducts from "../Pages/AllProducts/AllProducts";
+import Balance from "../Pages/Balance/Balance";
+import Withdrow from "../Pages/Withdrow/Withdrow";
+import PaymentSetting from "../Pages/PaymentSetting/PaymentSetting";
+import OrderTraking from "../Pages/OrderTraking/OrderTraking";
+import ProductRequest from "../Pages/ProductRequest/ProductRequest";
+import SellerReview from "../Pages/SellerReview/SellerReview";
+import Settings from "../Pages/Settings/Settings";
+import Service from "../Pages/Service/Service";
+import Support from "../Pages/Support/Support";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-product",
-        element: <CommingSoon />,
+        element: <AllProducts />,
       },
       // {
       //   path: "/dashboard",
@@ -38,19 +48,19 @@ const router = createBrowserRouter([
       // },
       {
         path: "/balance",
-        element: <CommingSoon />,
+        element: <Balance />,
       },
       {
         path: "/withdraw",
-        element: <CommingSoon />,
+        element: <Withdrow />,
       },
       {
         path: "/withdraw/payment-setting",
-        element: <CommingSoon />,
+        element: <PaymentSetting />,
       },
       {
         path: "/withdraw/withdraw",
-        element: <CommingSoon />,
+        element: <Withdrow />,
       },
       {
         path: "/withdraw/withdraw-report",
@@ -62,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/order-traking",
-        element: <CommingSoon />,
+        element: <OrderTraking />,
       },
       {
         path: "/customer-checker",
@@ -70,23 +80,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/product-request",
-        element: <CommingSoon />,
+        element: <ProductRequest />,
       },
       {
         path: "/seller-review",
-        element: <CommingSoon />,
+        element: <SellerReview />,
       },
       {
         path: "/settings",
-        element: <CommingSoon />,
+        element: <Settings />,
       },
       {
         path: "/service",
-        element: <CommingSoon />,
+        element: <Service />,
       },
       {
         path: "/support",
-        element: <CommingSoon />,
+        element: <Support />,
       },
       {
         path: "/logout",
