@@ -5,6 +5,7 @@ import CommingSoon from "./CommingSoon";
 import Login from "../Pages/Authcations/Login";
 import CourierCheck from "../Pages/CourierCheck/CourierCheck";
 import OrderReport from "../Pages/OrderReport/OrderReport";
+import WithdrowReport from "../Pages/withdrowReport/withdrowReport";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/withdraw/withdraw-report",
-        element: <CommingSoon />,
+        element: <WithdrowReport />,
       },
       {
         path: "/order-report",
