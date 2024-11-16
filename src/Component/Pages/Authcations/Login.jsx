@@ -15,20 +15,20 @@ export default function Login() {
   } = useForm();
 
   const {
-    register: registerAdmin,
-    handleSubmit: handleSubmitAdmin,
-    formState: { errors: errorsAdmin },
+    register: registerSignUp,
+    handleSubmit: handleSubmitSignUp,
+    formState: { errors: errorsSignUp },
   } = useForm();
 
   const handleUserLogin = (data) => {
     console.log("User Login Data:", data);
   };
 
-  const handleAdminLogin = (data) => {
-    console.log("Admin Login Data:", data);
+  const handleSignUp = (data) => {
+    console.log("Sign Up Data:", data);
   };
 
-  const RederectToHome = () => {
+  const redirectToDashboard = () => {
     router("/dashboard");
   };
 
@@ -36,30 +36,30 @@ export default function Login() {
     <div className="bg-gray-100 w-full min-h-screen py-10 px-5 flex flex-col justify-center items-center">
       <div className="w-full sm:w-[450px] p-7 sm:p-10 bg-white rounded-md shadow-md">
         {/* Toggle Buttons */}
-        <div className="grid grid-cols-2 gap-4 mb-2 ">
+        <div className="grid grid-cols-2 gap-4 mb-2">
           <button
             onClick={() => setActiveForm("user")}
             className={`px-4 py-2 w-full rounded-md font-semibold ${
               activeForm === "user" ? "bg-gray-700 text-white" : "bg-gray-200"
             }`}
           >
-            User
+            User Login
           </button>
           <button
-            onClick={() => setActiveForm("admin")}
-            className={`px-4 w-full py-2 rounded-md font-semibold ${
-              activeForm === "admin" ? "bg-gray-700 text-white" : "bg-gray-200"
+            onClick={() => setActiveForm("signup")}
+            className={`px-4 py-2 w-full rounded-md font-semibold ${
+              activeForm === "signup" ? "bg-gray-700 text-white" : "bg-gray-200"
             }`}
           >
-            Admin
+            Sign Up
           </button>
         </div>
 
-        {/* Login Form */}
+        {/* User Login Form */}
         {activeForm === "user" && (
           <form
             onSubmit={handleSubmitUser(handleUserLogin)}
-            className=" flex flex-col gap-5"
+            className="flex flex-col gap-5"
           >
             <h1 className="text-center font-bold text-2xl sm:text-3xl">
               Welcome User
@@ -111,7 +111,7 @@ export default function Login() {
 
             {/* Submit Button */}
             <input
-              onClick={RederectToHome}
+              onClick={redirectToDashboard}
               type="submit"
               value="Login"
               className="w-full p-2 rounded-md font-semibold cursor-pointer text-white bg-gray-700"
@@ -119,13 +119,14 @@ export default function Login() {
           </form>
         )}
 
-        {activeForm === "admin" && (
+        {/* Sign Up Form */}
+        {activeForm === "signup" && (
           <form
-            onSubmit={handleSubmitAdmin(handleAdminLogin)}
-            className=" flex flex-col gap-5"
+            onSubmit={handleSubmitSignUp(handleSignUp)}
+            className="flex flex-col gap-5"
           >
             <h1 className="text-center font-bold text-2xl sm:text-3xl">
-              Welcome Admin
+              Create an Account
             </h1>
 
             {/* Email Field */}
@@ -133,13 +134,58 @@ export default function Login() {
               <label>Email</label>
               <input
                 type="email"
-                {...registerAdmin("email", { required: "Email is required" })}
+                {...registerSignUp("email", { required: "Email is required" })}
                 className="w-full my-1 rounded-md border outline-0 px-3 p-2"
-                placeholder="Enter Admin Email"
+                placeholder="Enter Your Email"
               />
-              {errorsAdmin.email && (
+              {errorsSignUp.email && (
                 <p className="text-red-500 text-sm">
-                  {errorsAdmin.email.message}
+                  {errorsSignUp.email.message}
+                </p>
+              )}
+            </div>
+
+            {/* Phone Number Field */}
+            <div className="w-full">
+              <label>Phone Number</label>
+              <input
+                type="tel"
+                {...registerSignUp("phone", {
+                  required: "Phone number is required",
+                  pattern: {
+                    value: /^[0-9]{10,12}$/,
+                    message: "Enter a valid phone number",
+                  },
+                })}
+                className="w-full my-1 rounded-md border outline-0 px-3 p-2"
+                placeholder="Enter Your Phone Number"
+              />
+              {errorsSignUp.phone && (
+                <p className="text-red-500 text-sm">
+                  {errorsSignUp.phone.message}
+                </p>
+              )}
+            </div>
+
+            {/* User Type Dropdown */}
+            <div className="w-full">
+              <label>User Type</label>
+              <select
+                {...registerSignUp("userType", {
+                  required: "Please select a user type",
+                })}
+                className="w-full my-1 rounded-md border outline-0 px-3 p-2"
+              >
+                <option value="" selected disabled>
+                  Select User Type
+                </option>
+                <option value="admin">Admin</option>
+                <option value="customer">Customer</option>
+                <option value="other">Other</option>
+              </select>
+              {errorsSignUp.userType && (
+                <p className="text-red-500 text-sm">
+                  {errorsSignUp.userType.message}
                 </p>
               )}
             </div>
@@ -149,7 +195,7 @@ export default function Login() {
               <label>Password</label>
               <input
                 type={showPassword ? "text" : "password"}
-                {...registerAdmin("password", {
+                {...registerSignUp("password", {
                   required: "Password is required",
                   pattern: {
                     value: /^\d{5}$/,
@@ -157,7 +203,7 @@ export default function Login() {
                   },
                 })}
                 className="w-full my-1 rounded-md border outline-0 px-3 p-2"
-                placeholder="Enter Admin Password"
+                placeholder="Enter Your Password"
               />
               <div
                 onClick={() => setShowPassword(!showPassword)}
@@ -165,18 +211,17 @@ export default function Login() {
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </div>
-              {errorsAdmin.password && (
+              {errorsSignUp.password && (
                 <p className="text-red-500 text-sm">
-                  {errorsAdmin.password.message}
+                  {errorsSignUp.password.message}
                 </p>
               )}
             </div>
 
             {/* Submit Button */}
             <input
-              onClick={RederectToHome}
               type="submit"
-              value="Login"
+              value="Sign Up"
               className="w-full p-2 rounded-md font-semibold cursor-pointer text-white bg-gray-700"
             />
           </form>

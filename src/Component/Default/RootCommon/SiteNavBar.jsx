@@ -17,12 +17,13 @@ import {
   MdOutlinePayment,
   MdOutlinePayments,
 } from "react-icons/md";
-import { FaUserCircle } from "react-icons/fa";
+import { FaSteam, FaUserCircle } from "react-icons/fa";
 import { RiLogoutCircleRLine, RiSecurePaymentLine } from "react-icons/ri";
 import { useState } from "react";
 
 const navItems = [
   { name: "Dashboard", path: "/dashboard", icon: <MdDashboard /> },
+  { name: "About Us", path: "/about-us", icon: <FaSteam /> },
   { name: "All Products", path: "/all-product", icon: <MdHome /> },
   { name: "Balance", path: "/balance", icon: <MdAccountBalance /> },
   {

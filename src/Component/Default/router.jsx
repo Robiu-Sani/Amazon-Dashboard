@@ -7,6 +7,7 @@ import CourierCheck from "../Pages/CourierCheck/CourierCheck";
 import OrderReport from "../Pages/OrderReport/OrderReport";
 import WithdrowReport from "../Pages/withdrowReport/withdrowReport";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
       },
       {
         path: "/all-product",

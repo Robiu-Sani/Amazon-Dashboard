@@ -28,7 +28,7 @@ const DashboardTopSlider = () => {
   ];
 
   return (
-    <div className="relative w-full rounded-md h-[150px] sm:h-[250px] overflow-hidden">
+    <div className="relative w-full shadow-md rounded-md h-[150px] sm:h-[250px] overflow-hidden">
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 3000, disableOnInteraction: false }}

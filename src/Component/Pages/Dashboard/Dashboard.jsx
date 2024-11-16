@@ -1,3 +1,4 @@
+import { FaSteam } from "react-icons/fa";
 import DashboardTopSlider from "./DashboardTopSlider";
 import {
   MdDashboard,
@@ -23,6 +24,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const navItems = [
     { name: "ড্যাশবোর্ড", path: "/dashboard", icon: <MdDashboard /> },
+    { name: "আমাদের সম্পর্কে", path: "/about-us", icon: <FaSteam /> },
     { name: "সব পণ্য", path: "/all-product", icon: <MdHome /> },
     { name: "ব্যালেন্স", path: "/balance", icon: <MdAccountBalance /> },
     {
