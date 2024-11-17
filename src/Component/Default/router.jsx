@@ -18,6 +18,7 @@ import SellerReview from "../Pages/SellerReview/SellerReview";
 import Settings from "../Pages/Settings/Settings";
 import Service from "../Pages/Service/Service";
 import Support from "../Pages/Support/Support";
+import VerifectionFrom from "../Pages/Verifections/VerifectionFrom";
 
 const router = createBrowserRouter([
   {
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
       {
         path: "/support",
         element: <Support />,
+      },
+      {
+        path: "/verifection",
+        element: <VerifectionFrom />,
       },
       {
         path: "/logout",

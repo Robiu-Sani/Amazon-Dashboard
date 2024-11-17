@@ -16,6 +16,7 @@ import {
   MdArrowForwardIos,
   MdOutlinePayment,
   MdOutlinePayments,
+  MdFactCheck,
 } from "react-icons/md";
 import { FaSteam, FaUserCircle } from "react-icons/fa";
 import { RiLogoutCircleRLine, RiSecurePaymentLine } from "react-icons/ri";
@@ -57,6 +58,7 @@ const navItems = [
   { name: "Service", path: "/service", icon: <MdBuildCircle /> },
   { name: "Support", path: "/support", icon: <MdSupportAgent /> },
   { name: "About Us", path: "/about-us", icon: <FaSteam /> },
+  { name: "Verifection", path: "/verifection", icon: <MdFactCheck /> },
   { name: "Logout", path: "/logout", icon: <MdExitToApp /> },
 ];
 

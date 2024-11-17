@@ -1,7 +1,6 @@
 import { FaSteam } from "react-icons/fa";
 import DashboardTopSlider from "./DashboardTopSlider";
 import {
-  MdDashboard,
   MdHome,
   MdAccountBalance,
   MdPayment,
@@ -16,6 +15,7 @@ import {
   MdExitToApp,
   MdOutlinePayment,
   MdOutlinePayments,
+  MdFactCheck,
 } from "react-icons/md";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
@@ -63,6 +63,7 @@ export default function Dashboard() {
     { name: "সেটিংস", path: "/settings", icon: <MdSettings /> },
     { name: "সেবা", path: "/service", icon: <MdBuildCircle /> },
     { name: "সাপোর্ট", path: "/support", icon: <MdSupportAgent /> },
+    { name: "ভেরিফিকেশন", path: "/verifection", icon: <MdFactCheck /> },
     { name: "লগআউট", path: "/logout", icon: <MdExitToApp /> },
   ];
 
