@@ -1,3 +1,9 @@
+import WithdrawForm from "./WithdrawForm";
+
 export default function Withdrow() {
-  return <div>Withdrow</div>;
+  return (
+    <div>
+      <WithdrawForm />
+    </div>
+  );
 }

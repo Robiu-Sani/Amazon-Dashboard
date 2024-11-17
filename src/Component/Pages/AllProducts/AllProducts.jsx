@@ -1,3 +1,9 @@
+import ProductGrid from "./ProductGrid";
+
 export default function AllProducts() {
-  return <div>AllProducts</div>;
+  return (
+    <div>
+      <ProductGrid />
+    </div>
+  );
 }
