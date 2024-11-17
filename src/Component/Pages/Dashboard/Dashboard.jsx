@@ -74,16 +74,16 @@ export default function Dashboard() {
       </div>
       {/* --- dashboard cards ----------  */}
       <div
-        className="w-full grid gap-3 "
-        style={{
-          gridTemplateColumns: "repeat( auto-fit, minmax(250px, 1fr) )",
-        }}
+        className="w-full grid lg:grid-cols-3 grid-cols-2 gap-3 "
+        // style={{
+        //   gridTemplateColumns: "repeat( auto-fit, minmax(250px, 2fr) )",
+        // }}
       >
         {navItems.map((item, idx) => (
           <div
             key={idx}
             onClick={() => navigate(item.path)}
-            className={`${item.class?item.class:""} w-full  p-3 py-3 group shadow-xl hover:shadow-sm text-base text-white cursor-pointer rounded-md border flex justify-between items-center`}
+            className={`${item.class?item.class:""} w-full  p-3 py-3 group shadow-xl opacity-[0.98] hover:shadow-sm text-base text-white cursor-pointer rounded-md border flex justify-between items-center`}
           >
             <h2>{item.name}</h2>
             <span className={`w-[40px] h-[40px] group-hover:text-gray-800 rounded-full text-xl flex justify-center items-center bg-gray-100/40`}>
