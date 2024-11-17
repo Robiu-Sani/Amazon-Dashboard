@@ -1,3 +1,9 @@
+import AddPAymentPethod from "./AddPAymentPethod";
+
 export default function PaymentSetting() {
-  return <div>PaymentSetting</div>;
+  return (
+    <div>
+      <AddPAymentPethod />
+    </div>
+  );
 }
