@@ -1,41 +1,38 @@
+import { useState } from "react";
 
-
-import React, { useState } from "react";
-
-const OrderTraking = () => {
+const OrderTracking = () => {
   const [trackingId, setTrackingId] = useState("");
   const [orderStatus, setOrderStatus] = useState(null);
   const [error, setError] = useState(null);
 
-  // Handle the API Call
   const fetchOrderStatus = async () => {
     try {
-      // Clear previous data
+      console.log("Fetching order status...");
       setOrderStatus(null);
       setError(null);
 
-      // Determine API endpoint and credentials
-      const isPathao = trackingId.startsWith("PH"); // Example logic
+      const isPathao = trackingId.startsWith("PH");
       const apiUrl = isPathao
-        ? "https://hermes-api.p-stageenv.xyz" // Replace with actual Pathao endpoint
-        : "https://steadfast.com/api/v1/orders/track"; // Replace with actual SteadFast endpoint
+        ? "https://hermes-api.p-stageenv.xyz"
+        : "https://steadfast.com/api/v1/orders/track";
 
       const credentials = isPathao
         ? {
-            clientId: "YQdJy7vbOG",
-            clientSecret: "A2JKENivHUYjKewYtZ8cuaOIhhchMuKwjxLyDjHX",
+            clientId: "QBeXLnoeyK",
+            clientSecret: "imn7G1HWztCbWFCZSI7NAn6pukXqEqcfhjn64Abo",
           }
         : {
-            apiKey: "1hrdbfzrj7ximsdvgnaa0umnkovycvpf",
-            secretKey: "khgbgvwlzvnzuet27rsz9eao",
+            apiKey: "1xmrzg0kqp4s4b5n4qm4f3n5rxqzkxvw",
+            secretKey: "ztyedvojgis4i3vbosxtcigx",
           };
 
-      // API request body
       const body = isPathao
         ? { tracking_id: trackingId }
         : { order_id: trackingId };
 
-      // API Call
+      console.log("API URL:", apiUrl);
+      console.log("Request Body:", body);
+
       const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
@@ -55,18 +52,22 @@ const OrderTraking = () => {
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error("API Error Response:", errorText);
         throw new Error("Tracking information not found!");
       }
 
       const data = await response.json();
+      console.log("API Response:", data);
       setOrderStatus(data);
     } catch (err) {
+      console.error("Error:", err.message);
       setError(err.message);
     }
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white shadow rounded">
+    <div className="w-full  mx-auto p-4 bg-white shadow rounded">
       <h1 className="text-xl font-bold mb-4">Order Tracking</h1>
       <input
         type="text"
@@ -77,7 +78,7 @@ const OrderTraking = () => {
       />
       <button
         onClick={fetchOrderStatus}
-        className="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700"
+        className="bg-gray-600 text-white px-4 py-2 rounded w-full hover:bg-gray-700"
       >
         Track Order
       </button>
@@ -85,11 +86,13 @@ const OrderTraking = () => {
       {orderStatus && (
         <div className="mt-4 p-4 bg-gray-100 rounded">
           <h2 className="font-semibold text-lg">Order Status:</h2>
-          <pre className="text-sm mt-2">{JSON.stringify(orderStatus, null, 2)}</pre>
+          <pre className="text-sm mt-2">
+            {JSON.stringify(orderStatus, null, 2)}
+          </pre>
         </div>
       )}
     </div>
   );
 };
 
-export default OrderTraking;
+export default OrderTracking;
