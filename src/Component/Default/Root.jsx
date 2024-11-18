@@ -12,7 +12,7 @@ export default function Root() {
     setCallNav(data);
   };
   return (
-    <div className="bg-gray-100 shadow-md relative w-full flex h-screen">
+    <div className="bg-gray-100  shadow-md relative w-full flex h-screen">
       <div
         className={`w-full ${
           callNav ? "left-0" : "-left-[100%]"
@@ -28,7 +28,7 @@ export default function Root() {
       </div>
       <div className="w-full flex flex-col">
         <DashboardHeader handleCallNav={handleCallNav} />
-        <div className="w-full h-[calc(100vh-90px)] overflow-y-auto p-3">
+        <div className="w-full h-[calc(100vh-90px)] overflow-y-auto  p-3">
           <Outlet />
         </div>
         <Footer />
