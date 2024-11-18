@@ -67,8 +67,8 @@ const OrderTracking = () => {
   };
 
   return (
-    <div className="w-full  mx-auto p-4 bg-white shadow rounded">
-      <h1 className="text-xl font-bold mb-4">Order Tracking</h1>
+    <div className="w-full  mx-auto p-6 bg-white shadow rounded">
+      <h1 className="text-xl font-bold mb-4 text-center">Order Tracking</h1>
       <input
         type="text"
         placeholder="Enter Tracking ID"

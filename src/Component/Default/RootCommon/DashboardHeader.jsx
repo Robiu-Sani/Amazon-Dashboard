@@ -18,13 +18,13 @@ export default function DashboardHeader({ handleCallNav }) {
           Dashboard
         </span>
       </div>
+      <input
+        type="search"
+        placeholder="Search here"
+        className="w-[370px] text-gray-500 hidden md:block outline-0 p-1 px-3 text-left border rounded-md"
+      />
       <div className="flex justify-end items-center gap-3">
         <div className="flex justify-center items-center">
-          <input
-            type="button"
-            value="Search here"
-            className="w-[250px] text-gray-500 hidden md:block cursor-pointer p-1 px-3 text-left border rounded-md"
-          />
           <span className="text-xl block md:hidden cursor-pointer p-1">
             <FiSearch />
           </span>

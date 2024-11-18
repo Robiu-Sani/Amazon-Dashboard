@@ -2,26 +2,57 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 export default function WithdrawForm() {
-  const [withdrawType, setWithdrawType] = useState(null);
+  const [selectedAccount, setSelectedAccount] = useState(null);
   const {
     register,
     handleSubmit,
     watch,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
+    data.account = selectedAccount;
     console.log("Form Data:", data);
     alert("Form submitted successfully!");
     reset();
+    setSelectedAccount(null);
   };
+
+  const accounts = [
+    {
+      value: "bkash",
+      label: "বিকাশ",
+      img: "https://freepnglogo.com/images/all_img/1701670291bKash-App-Logo-PNG.png",
+    },
+    {
+      value: "nagad",
+      label: "নগদ",
+      img: "https://freelogopng.com/images/all_img/1679248828Nagad-Logo-PNG.png",
+    },
+    {
+      value: "rocket",
+      label: "রকেট",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT12VgBUxXDd2i17DbU1_o5hp-u6YxBBdSKkQ&s",
+    },
+    {
+      value: "upay",
+      label: "উপায়",
+      img: "https://upload.wikimedia.org/wikipedia/bn/a/a8/%E0%A6%89%E0%A6%AA%E0%A6%BE%E0%A6%AF%E0%A6%BC_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.png",
+    },
+    {
+      value: "mCash",
+      label: "এমক্যাশ",
+      img: "https://play-lh.googleusercontent.com/8sY7fsOPPoXNt36tNQR9dOnpmbjaYaoXQ8e2U_m-Jd535v1W--Zp31JUFAT1j35lmA4",
+    },
+  ];
 
   const amount = watch("amount", 0);
 
   return (
-    <div className=" flex flex-col gap-3 items-center justify-center">
-      <div className="bg-white rounded-md shadow-md p-6 w-full max-w-lg ">
+    <div className="flex flex-col gap-3 items-center justify-center">
+      <div className="bg-white rounded-md shadow-md p-6 w-full max-w-lg">
         <h2 className="text-lg font-bold text-green-700 mb-3">
           টাকা উত্তোলন করুন
         </h2>
@@ -31,29 +62,64 @@ export default function WithdrawForm() {
         </p>
       </div>
       <div className="bg-white rounded-md shadow-md p-6 w-full max-w-lg">
-        {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* Select Account */}
+          {/* Custom Dropdown */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               একাউন্ট সিলেক্ট করুন *
             </label>
-            <select
-              className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-              {...register("account", { required: "এই ঘরটি পূরণ করুন।" })}
-            >
-              <option value="" disabled selected>
-                মেথড নির্বাচন করুন
-              </option>
-              <option value="bkash">বিকাশ</option>
-              <option value="nagad">নগদ</option>
-              <option value="rocket">রকেট</option>
-              <option value="upay">উপায়</option>
-              <option value="mCash">এমক্যাশ</option>
-            </select>
-            {errors.account && (
+            <div className="relative">
+              <div className="border rounded-md p-2 cursor-pointer">
+                <div
+                  onClick={() => setSelectedAccount(null)}
+                  className="flex items-center space-x-2"
+                >
+                  {selectedAccount ? (
+                    <>
+                      <img
+                        src={
+                          accounts.find(
+                            (account) => account.value === selectedAccount
+                          ).img
+                        }
+                        alt={selectedAccount}
+                        className="w-6 h-6"
+                      />
+                      <span>
+                        {
+                          accounts.find(
+                            (account) => account.value === selectedAccount
+                          ).label
+                        }
+                      </span>
+                    </>
+                  ) : (
+                    <span>একাউন্ট নির্বাচন করুন</span>
+                  )}
+                </div>
+              </div>
+              {selectedAccount === null && (
+                <ul className="absolute z-10 bg-white border rounded-md w-full mt-1 shadow-md">
+                  {accounts.map((account) => (
+                    <li
+                      key={account.value}
+                      onClick={() => setSelectedAccount(account.value)}
+                      className="flex items-center space-x-2 p-2 cursor-pointer hover:bg-gray-100"
+                    >
+                      <img
+                        src={account.img}
+                        alt={account.value}
+                        className="w-6 h-6"
+                      />
+                      <span>{account.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            {!selectedAccount && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.account.message}
+                অনুগ্রহ করে একাউন্ট সিলেক্ট করুন।
               </p>
             )}
           </div>
@@ -91,11 +157,11 @@ export default function WithdrawForm() {
               {/* Instant Payment */}
               <div
                 className={`border rounded-md p-3 flex justify-between items-center cursor-pointer ${
-                  withdrawType === "instant"
+                  watch("withdrawType") === "instant"
                     ? "border-green-500 bg-green-50"
                     : "border-gray-300"
                 }`}
-                onClick={() => setWithdrawType("instant")}
+                onClick={() => setValue("withdrawType", "instant")}
               >
                 <div>
                   <h4 className="text-sm font-medium text-gray-700">
@@ -111,7 +177,7 @@ export default function WithdrawForm() {
                   {...register("withdrawType", {
                     required: "উত্তোলনের ধরন সিলেক্ট করুন।",
                   })}
-                  checked={withdrawType === "instant"}
+                  checked={watch("withdrawType") === "instant"}
                   className="text-green-500 focus:ring-green-500"
                 />
               </div>
@@ -119,11 +185,11 @@ export default function WithdrawForm() {
               {/* Regular Payment */}
               <div
                 className={`border rounded-md p-3 flex justify-between items-center cursor-pointer ${
-                  withdrawType === "regular"
+                  watch("withdrawType") === "regular"
                     ? "border-green-500 bg-green-50"
                     : "border-gray-300"
                 }`}
-                onClick={() => setWithdrawType("regular")}
+                onClick={() => setValue("withdrawType", "regular")}
               >
                 <div>
                   <h4 className="text-sm font-medium text-gray-700">
@@ -139,7 +205,7 @@ export default function WithdrawForm() {
                   {...register("withdrawType", {
                     required: "উত্তোলনের ধরন সিলেক্ট করুন।",
                   })}
-                  checked={withdrawType === "regular"}
+                  checked={watch("withdrawType") === "regular"}
                   className="text-green-500 focus:ring-green-500"
                 />
               </div>

@@ -17,10 +17,12 @@ import {
   MdOutlinePayment,
   MdOutlinePayments,
   MdFactCheck,
+  MdOutlineStarPurple500,
 } from "react-icons/md";
 import { FaSteam, FaUserCircle } from "react-icons/fa";
 import { RiLogoutCircleRLine, RiSecurePaymentLine } from "react-icons/ri";
 import { useState } from "react";
+import { FaCircleCheck } from "react-icons/fa6";
 
 const navItems = [
   { name: "Dashboard", path: "/dashboard", icon: <MdDashboard /> },
@@ -70,8 +72,8 @@ export default function SiteNavBar({ handleCallNav }) {
   };
 
   return (
-    <div className="w-full h-full bg-white p-4 flex flex-col gap-5">
-      <div className="w-full  border-b py-5">
+    <div className="w-full h-full bg-white p-4 flex flex-col gap-2">
+      <div className="w-full   pt-5">
         <h2 className="text-2xl font-bold text-center">Relifemart</h2>
         <div className=" flex w-full justify-center items-center gap-2">
           <img
@@ -82,8 +84,9 @@ export default function SiteNavBar({ handleCallNav }) {
             className="mx-auto min-w-[50px] max-w-[51px] rounded-full min-h-[50px] max-h-[51px]"
           />
           <div className="w-full flex flex-col ">
-            <h3 className=" font-medium leading-[-8px] text-gray-600">
+            <h3 className=" font-medium leading-[-8px] flex justify-start items-center gap-2 text-gray-600">
               User name
+              <FaCircleCheck className="text-blue-500" />
             </h3>
             <small className="text-sm font-medium leading-[-12px] text-gray-600">
               01*********
@@ -92,6 +95,24 @@ export default function SiteNavBar({ handleCallNav }) {
               ID : 12354
             </small>
           </div>
+        </div>
+        <div className="w-full flex justify-center gap-3 items-center">
+          <div className="flex flex-col justify-center items-center">
+            <small className="bg-gray-100 block px-2 rounded text-gray-400">
+              Top Rated
+            </small>
+            <small className="flex justify-center items-center">
+              <MdOutlineStarPurple500 className="text-amber-500" />
+              <MdOutlineStarPurple500 className="text-amber-500" />
+              <MdOutlineStarPurple500 className="text-amber-500" />
+            </small>
+          </div>
+          <small className="bg-blue-500 px-2 rounded text-white">
+            Total Earned : 50000 tk
+          </small>
+        </div>
+        <div className="min-w-full  text-center rounded bg-green-600 font-semibold mt-1 text-white ">
+          Active Menber
         </div>
       </div>
       <div className="w-full dashboard h-[calc(100vh-230px)] scroll-none overflow-y-scroll">

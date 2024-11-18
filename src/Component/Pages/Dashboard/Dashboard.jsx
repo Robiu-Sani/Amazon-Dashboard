@@ -130,7 +130,16 @@ export default function Dashboard() {
 
   return (
     <div className="w-full">
-      <div className="w-full mb-3  md:w-[calc(100vw-320px)] 2xl:w-[calc(100vw-300px)]">
+      <div className="w-full rounded bg-gradient-to-r from-blue-500 to-cyan-500">
+        <marquee className="text-white">
+          At ProductFlow, we bring the world of shopping to your fingertips. Our
+          platform is designed to provide a seamless and enjoyable shopping
+          experience with a wide range of products to meet your every need.
+          Whether you`re looking for the latest gadgets, trendy fashion,
+          essential household items, or unique gifts, we have it all!
+        </marquee>
+      </div>
+      <div className="w-full my-3  md:w-[calc(100vw-320px)] 2xl:w-[calc(100vw-300px)]">
         <DashboardTopSlider />
       </div>
       {/* --- dashboard cards ----------  */}

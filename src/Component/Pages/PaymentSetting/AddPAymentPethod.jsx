@@ -1,35 +1,77 @@
 import { useState, useEffect } from "react";
-import { MdOutlinePayment } from "react-icons/md";
-import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function AddPaymentMethod() {
   const [accounts, setAccounts] = useState([]);
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const [selectedMethod, setSelectedMethod] = useState(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  // Load accounts from localStorage when the component mounts
+  const paymentMethods = [
+    {
+      value: "bkash",
+      label: "বিকাশ",
+      img: "https://freepnglogo.com/images/all_img/1701670291bKash-App-Logo-PNG.png",
+    },
+    {
+      value: "nagad",
+      label: "নগদ",
+      img: "https://freelogopng.com/images/all_img/1679248828Nagad-Logo-PNG.png",
+    },
+    {
+      value: "rocket",
+      label: "রকেট",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT12VgBUxXDd2i17DbU1_o5hp-u6YxBBdSKkQ&s",
+    },
+    {
+      value: "upay",
+      label: "উপায়",
+      img: "https://upload.wikimedia.org/wikipedia/bn/a/a8/%E0%A6%89%E0%A6%AA%E0%A6%BE%E0%A6%AF%E0%A6%BC_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.png",
+    },
+    {
+      value: "mCash",
+      label: "এমক্যাশ",
+      img: "https://play-lh.googleusercontent.com/8sY7fsOPPoXNt36tNQR9dOnpmbjaYaoXQ8e2U_m-Jd535v1W--Zp31JUFAT1j35lmA4",
+    },
+  ];
+
+  // Load accounts from localStorage on mount
   useEffect(() => {
     const storedAccounts = JSON.parse(localStorage.getItem("accounts")) || [];
     setAccounts(storedAccounts);
   }, []);
 
-  // Save data to localStorage and update the state
+  // Save account to localStorage
   const saveToLocalStorage = (newAccount) => {
     const updatedAccounts = [...accounts, newAccount];
     setAccounts(updatedAccounts);
     localStorage.setItem("accounts", JSON.stringify(updatedAccounts));
-    toast.success("সফলভাবে সংরক্ষণ করা হয়েছে!"); // Toast notification
+    toast.success("সফলভাবে সংরক্ষণ করা হয়েছে!");
   };
 
-  // Form submit handler
-  const onSubmit = (data) => {
-    saveToLocalStorage(data);
-    reset(); // Clear form
+  // Handle form submission
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const accountNumber = e.target.accountNumber.value;
+
+    if (!selectedMethod) {
+      toast.error("পেমেন্ট মেথড নির্বাচন করুন।");
+      return;
+    }
+
+    if (!/^\d{11}$/.test(accountNumber)) {
+      toast.error("একাউন্ট নাম্বার ১১ সংখ্যার হতে হবে।");
+      return;
+    }
+
+    const newAccount = {
+      paymentMethod: selectedMethod.label,
+      accountNumber,
+      img: selectedMethod.img,
+    };
+
+    saveToLocalStorage(newAccount);
+    setSelectedMethod(null);
+    e.target.reset();
   };
 
   return (
@@ -39,64 +81,66 @@ export default function AddPaymentMethod() {
 
       {/* Left Section */}
       <div className="w-full flex flex-col gap-4">
-        {/* Header */}
-        <div className="flex justify-start items-center gap-3 p-4 shadow-md rounded-md bg-white">
-          <MdOutlinePayment className="text-2xl text-gray-500" />
-          <p className="text-lg font-semibold text-gray-700">অ্যাড একাউন্ট</p>
-        </div>
-
-        {/* Form */}
         <form
-          className="w-full p-5 rounded-md bg-white shadow-md space-y-5"
-          onSubmit={handleSubmit(onSubmit)}
+          className="p-5 rounded-md bg-white shadow-md space-y-5"
+          onSubmit={handleFormSubmit}
         >
-          {/* Payment Method */}
-          <div>
+          {/* Payment Method Dropdown */}
+          <div className="relative">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               মোবাইল পেমেন্ট মেথড
             </label>
-            <select
-              className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
-              {...register("paymentMethod", { required: "এই ঘরটি পূরণ করুন।" })}
+            <div
+              className="border p-2 rounded-md cursor-pointer"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
             >
-              <option value="" disabled selected>
-                মেথড নির্বাচন করুন
-              </option>
-              <option value="bkash">বিকাশ</option>
-              <option value="nagad">নগদ</option>
-              <option value="rocket">রকেট</option>
-              <option value="upay">উপায়</option>
-              <option value="mCash">এমক্যাশ</option>
-            </select>
-            {errors.paymentMethod && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.paymentMethod.message}
-              </p>
+              {selectedMethod ? (
+                <div className="flex items-center gap-3">
+                  <img
+                    src={selectedMethod.img}
+                    alt={selectedMethod.label}
+                    className="w-8 h-8 object-contain"
+                  />
+                  <span>{selectedMethod.label}</span>
+                </div>
+              ) : (
+                <span className="text-gray-400">মেথড নির্বাচন করুন</span>
+              )}
+            </div>
+            {dropdownOpen && (
+              <ul className="absolute z-10 bg-white border rounded-md shadow-lg mt-2 w-full max-h-60 overflow-y-auto">
+                {paymentMethods.map((method) => (
+                  <li
+                    key={method.value}
+                    className="flex items-center gap-3 p-2 cursor-pointer hover:bg-gray-100"
+                    onClick={() => {
+                      setSelectedMethod(method);
+                      setDropdownOpen(false);
+                    }}
+                  >
+                    <img
+                      src={method.img}
+                      alt={method.label}
+                      className="w-8 h-8 object-contain"
+                    />
+                    <span>{method.label}</span>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
 
-          {/* Account Number */}
+          {/* Account Number Input */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               একাউন্ট নাম্বার
             </label>
             <input
               type="text"
+              name="accountNumber"
               className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
               placeholder="আপনার একাউন্ট নাম্বার লিখুন"
-              {...register("accountNumber", {
-                required: "একাউন্ট নাম্বার প্রদান করুন।",
-                pattern: {
-                  value: /^[0-9]{11}$/,
-                  message: "একাউন্ট নাম্বার ১১ সংখ্যার হতে হবে।",
-                },
-              })}
             />
-            {errors.accountNumber && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.accountNumber.message}
-              </p>
-            )}
           </div>
 
           {/* Submit Button */}
@@ -132,7 +176,12 @@ export default function AddPaymentMethod() {
                 accounts.map((account, index) => (
                   <tr key={index} className="hover:bg-gray-50">
                     <td className="border border-gray-200 p-2">{index + 1}</td>
-                    <td className="border border-gray-200 p-2">
+                    <td className="border border-gray-200 p-2 flex items-center gap-2">
+                      <img
+                        src={account.img}
+                        alt={account.paymentMethod}
+                        className="w-6 h-6 object-contain"
+                      />
                       {account.paymentMethod}
                     </td>
                     <td className="border border-gray-200 p-2">
