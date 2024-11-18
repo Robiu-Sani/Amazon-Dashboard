@@ -240,7 +240,7 @@ export default function VerificationForm() {
                 <img
                   src={images.voterIdImage}
                   alt="Voter ID Preview"
-                  className="mt-2 w-full h-auto rounded-md border"
+                  className=" w-full h-auto rounded-md border"
                 />
               )) || (
                 <div className="w-full max-h-[200px] min-h-[150px] flex flex-col justify-center items-center h-full">
@@ -267,7 +267,7 @@ export default function VerificationForm() {
                 <img
                   src={images.passportImage}
                   alt="Passport Preview"
-                  className="mt-2 w-full h-auto rounded-md border"
+                  className=" w-full h-auto rounded-md border"
                 />
               )) || (
                 <div className="w-full max-h-[200px]  min-h-[150px] flex flex-col justify-center items-center h-full">
@@ -288,7 +288,7 @@ export default function VerificationForm() {
                 <img
                   src={images.drivingLicenseImage}
                   alt="Passport Preview"
-                  className="mt-2 w-full h-auto rounded-md border"
+                  className=" w-full h-auto rounded-md border"
                 />
               )) || (
                 <div className="w-full max-h-[200px]  min-h-[150px] flex flex-col justify-center items-center h-full">
