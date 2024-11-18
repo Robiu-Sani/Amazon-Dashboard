@@ -8,23 +8,19 @@ const DashboardTopSlider = () => {
     {
       id: 1,
       image:
-        "https://img.lovepik.com/background/20211021/large/lovepik-banner-background-image_500453380.jpg",
+        "https://i.ibb.co.com/Pr5MZYK/Grey-Minimalist-Special-Offer-Banner-Landscape.png",
     },
     {
       id: 2,
       image:
-        "https://png.pngtree.com/background/20210709/original/pngtree-flat-yellow-geometric-background-big-promotion-picture-image_351323.jpg",
+        "https://i.ibb.co.com/FgH6NVf/Green-and-Yellow-Simple-Clean-Shoes-Sale-Banner.png",
     },
     {
       id: 3,
       image:
-        "https://static.vecteezy.com/system/resources/thumbnails/021/053/699/small/background-banners-full-color-geometric-gradations-eps-10-free-vector.jpg",
+        "https://i.ibb.co.com/Trn6MXF/Black-and-Yellow-Simple-Modern-Special-Offer-Sale-Banner.png",
     },
-    {
-      id: 4,
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKR1K6aQaL80IJjWGQNDjt1HLs6oRO9LSa0GqeOrFwD_O_Jgum1CCslBWrP4ilOkBo6FE&usqp=CAU",
-    },
+ 
   ];
 
   return (
