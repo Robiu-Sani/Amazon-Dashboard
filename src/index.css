@@ -12,3 +12,9 @@
 .scroll-none::-webkit-scrollbar {
   display: none;
 }
+/* .swiper-pagination {
+  margin-bottom: -20px !important;
+} */
+.swiper-pagination-bullet-active {
+  background: #0056b3 !important;
+}

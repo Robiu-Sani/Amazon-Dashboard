@@ -19,6 +19,8 @@ import {
 } from "react-icons/md";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import DashboradChartContainer from "./DashboradChartContainer";
+import EmployesOftheYear from "./EmployesOftheYear";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -153,7 +155,9 @@ export default function Dashboard() {
           <div
             key={idx}
             onClick={() => navigate(item.path)}
-            className={`${item.class?item.class:""} w-full  p-3 py-3 group shadow-xl opacity-[0.98] hover:shadow-sm text-base text-white cursor-pointer rounded-md border flex justify-between items-center`}
+            className={`${
+              item.class ? item.class : ""
+            } w-full  p-3 py-3 group shadow-xl opacity-[0.98] hover:shadow-sm text-base text-white cursor-pointer rounded-md border flex justify-between items-center`}
           >
             <h2>{item.name}</h2>
             <span
@@ -163,6 +167,12 @@ export default function Dashboard() {
             </span>
           </div>
         ))}
+      </div>
+
+      {/* -------------  */}
+      <DashboradChartContainer />
+      <div className="w-full my-3  md:w-[calc(100vw-320px)] 2xl:w-[calc(100vw-300px)]">
+        <EmployesOftheYear />
       </div>
     </div>
   );

@@ -113,14 +113,21 @@ const CourierCheck = () => {
                 <strong>
                   {responseData.courierData.summary.success_parcel}
                 </strong>
-                , Cancelled:{" "}
-                <strong>
-                  {responseData.courierData.summary.cancelled_parcel}
-                </strong>
-                , Success Ratio:{" "}
-                <strong>
-                  {responseData.courierData.summary.success_ratio}%
-                </strong>
+                ,
+                <span className="text-red-600">
+                  {" "}
+                  Cancelled:{" "}
+                  <strong>
+                    {responseData.courierData.summary.cancelled_parcel}
+                  </strong>
+                </span>
+                ,{" "}
+                <span className="text-green-600">
+                  Success Ratio:{" "}
+                  <strong>
+                    {responseData.courierData.summary.success_ratio}%
+                  </strong>
+                </span>
               </p>
             </div>
           )}

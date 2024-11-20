@@ -19,6 +19,7 @@ import Settings from "../Pages/Settings/Settings";
 import Service from "../Pages/Service/Service";
 import Support from "../Pages/Support/Support";
 import VerifectionFrom from "../Pages/Verifections/VerifectionFrom";
+import AllCategorys from "../Pages/AllProducts/AllCategorys";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-product",
+        element: <AllCategorys />,
+      },
+      {
+        path: "/category/:category",
         element: <AllProducts />,
       },
       // {
