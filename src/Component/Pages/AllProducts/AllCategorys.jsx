@@ -255,14 +255,14 @@ export default function AllCategorys() {
                 `/category/${item.name.replace(/\s+/g, "-").toLowerCase()}`
               )
             }
-            className="w-full cursor-pointer p-3 flex flex-col gap-2 justify-center items-center overflow-hidden rounded-md bg-white shadow-md hover:shadow-lg hover:scale-105 transition-transform"
+            className="w-full cursor-pointer p-3 flex  gap-2 justify-start items-center overflow-hidden rounded-md bg-white shadow-md hover:shadow-lg hover:scale-105 transition-transform"
           >
             <img
               src={
                 item.image || "https://via.placeholder.com/150?text=No+Image"
               }
               alt={item.name || "Category"}
-              className="w-14 h-14 rounded-full object-cover"
+              className="w-14 h-14 rounded-md object-cover"
             />
             <span className="text-center font-medium text-gray-700">
               {item.name}
