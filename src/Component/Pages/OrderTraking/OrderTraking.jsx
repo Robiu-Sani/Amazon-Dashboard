@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { ImSpinner9 } from "react-icons/im";
 
 const OrderTracking = () => {
   const [trackingId, setTrackingId] = useState("");
   const [orderStatus, setOrderStatus] = useState(null);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchOrderStatus = async () => {
     try {
+      setIsLoading(true);
       console.log("Fetching order status...");
       setOrderStatus(null);
       setError(null);
@@ -63,6 +66,8 @@ const OrderTracking = () => {
     } catch (err) {
       console.error("Error:", err.message);
       setError(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -78,8 +83,10 @@ const OrderTracking = () => {
       />
       <button
         onClick={fetchOrderStatus}
-        className="bg-gray-600 text-white px-4 py-2 rounded w-full hover:bg-gray-700"
+        className="bg-gray-600 text-white px-4 flex justify-center items-center gap-3 py-2 rounded w-full hover:bg-gray-700"
       >
+        {" "}
+        {isLoading && <ImSpinner9 className="animate-spin" />}
         Track Order
       </button>
       {error && <p className="text-red-500 mt-4">{error}</p>}

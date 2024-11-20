@@ -1,11 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
+import { ImSpinner9 } from "react-icons/im";
 
 const CourierCheck = () => {
   const [phone, setPhone] = useState(""); // Phone number state
   const [responseData, setResponseData] = useState(null); // API response state
   const [error, setError] = useState(null); // Error state
   const apiKey = "ktlY9kJCbKJukmakVNtvpgHpZ3Tm83vPBtmAKfHWCDyhn9wlas7G0OUIUXWS"; // Your API key
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCheck = async () => {
     if (!phone.trim()) {
@@ -13,6 +15,7 @@ const CourierCheck = () => {
       return;
     }
     try {
+      setIsLoading(true);
       const response = await axios.post(
         `https://bdcourier.com/api/courier-check?phone=${phone}`,
         {},
@@ -29,6 +32,8 @@ const CourierCheck = () => {
       console.error(err.message);
       setError("Something went wrong. Please try again."); // Set error message
       setResponseData(null); // Clear previous data on error
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -49,8 +54,9 @@ const CourierCheck = () => {
         </div>
         <button
           onClick={handleCheck}
-          className="w-full bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition"
+          className="w-full flex justify-center items-center gap-3 bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition"
         >
+          {isLoading && <ImSpinner9 className="animate-spin" />}
           Check Courier
         </button>
 
