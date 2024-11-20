@@ -22,7 +22,7 @@ import {
 import { FaSteam, FaUserCircle } from "react-icons/fa";
 import { RiLogoutCircleRLine, RiSecurePaymentLine } from "react-icons/ri";
 import { useState } from "react";
-import { FaCircleCheck } from "react-icons/fa6";
+import { VscVerifiedFilled } from "react-icons/vsc";
 
 const navItems = [
   { name: "Dashboard", path: "/dashboard", icon: <MdDashboard /> },
@@ -86,7 +86,7 @@ export default function SiteNavBar({ handleCallNav }) {
           <div className="w-full flex flex-col ">
             <h3 className=" font-medium leading-[-8px] flex justify-start items-center gap-2 text-gray-600">
               User name
-              <FaCircleCheck className="text-blue-500" />
+              <VscVerifiedFilled className="text-blue-500" />
             </h3>
             <small className="text-sm font-medium leading-[-12px] text-gray-600">
               01*********
