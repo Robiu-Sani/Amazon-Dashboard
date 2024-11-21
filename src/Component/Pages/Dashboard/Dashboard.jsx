@@ -157,7 +157,7 @@ export default function Dashboard() {
             onClick={() => navigate(item.path)}
             className={`${
               item.class ? item.class : ""
-            } w-full  p-3 py-3 group shadow-xl opacity-[0.98] hover:shadow-sm text-base text-white cursor-pointer rounded-md border flex justify-between items-center`}
+            } w-full  p-3 py-3 group shadow-xl scroll-animation opacity-[0.98] hover:shadow-sm text-base text-white cursor-pointer rounded-md border flex justify-between items-center`}
           >
             <h2>{item.name}</h2>
             <span

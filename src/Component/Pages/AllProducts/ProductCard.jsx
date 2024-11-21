@@ -75,10 +75,9 @@ export default function ProductCard({ product }) {
       toast.error("ডাউনলোড করতে সমস্যা হচ্ছে!");
     }
   };
-  
 
   return (
-    <div className="border rounded-lg p-4 bg-white shadow-md hover:shadow-lg">
+    <div className="border scroll-animation rounded-lg p-4 bg-white shadow-md hover:shadow-lg">
       <Toaster className="shadow-md" />
       <img
         src={product.image}

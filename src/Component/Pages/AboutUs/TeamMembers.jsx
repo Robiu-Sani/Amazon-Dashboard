@@ -25,17 +25,15 @@ export default function TeamMembers() {
       id: 4,
       name: "MD Hasibul Hasan Hasib ",
       position: "Co-founder",
-      image: "https://i.ibb.co.com/8dRQ2tx/466867453-2297384857287941-3486516729246488251-n.jpg",
+      image:
+        "https://i.ibb.co.com/8dRQ2tx/466867453-2297384857287941-3486516729246488251-n.jpg",
     },
     {
       id: 5,
       name: "Md Abdullah",
       position: "Co-founder",
-      image:
-        "https://randomuser.me/api/portraits/men/33.jpg",
+      image: "https://randomuser.me/api/portraits/men/33.jpg",
     },
-
-   
   ];
 
   return (
@@ -48,7 +46,7 @@ export default function TeamMembers() {
       {teamMembers.map((item, idx) => (
         <div
           key={idx}
-          className="w-full min-h-[200px] shadow-md border relative rounded-md overflow-hidden flex justify-center items-start"
+          className="w-full scroll-animation min-h-[200px] shadow-md border relative rounded-md overflow-hidden flex justify-center items-start"
         >
           <img
             src={item.image}

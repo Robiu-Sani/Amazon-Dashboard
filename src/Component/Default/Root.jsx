@@ -3,34 +3,10 @@ import SiteNavBar from "./RootCommon/SiteNavBar";
 import DashboardHeader from "./RootCommon/DashboardHeader";
 import Footer from "./Footer";
 import { RxCross2 } from "react-icons/rx";
-import { useEffect, useState } from "react";
-import Loader from "./Loader";
+import { useState } from "react";
 
 export default function Root() {
   const [callNav, setCallNav] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Set loading state during window load
-  useEffect(() => {
-    const handleLoad = () => {
-      setIsLoading(false);
-    };
-    window.addEventListener("load", handleLoad);
-
-    // Cleanup the event listener
-    return () => {
-      window.removeEventListener("load", handleLoad);
-    };
-  }, []);
-
-  // Handle loader display
-  if (isLoading) {
-    return (
-      <div className="w-full min-h-screen flex p-3 justify-center items-center bg-gray-100">
-        <Loader />
-      </div>
-    );
-  }
 
   // Toggle sidebar
   const handleCallNav = (data) => {

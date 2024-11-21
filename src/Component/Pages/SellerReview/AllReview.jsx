@@ -6,6 +6,8 @@ export default function AllReview() {
       username: "John Doe",
       date: "2024-11-18",
       rating: 5,
+      reviewImage:
+        "https://s3.amazonaws.com/libapps/accounts/1928/images/Review.jpg",
       reviewText:
         "Amazing product! Highly recommend to everyone. The quality exceeded my expectations, and the service was exceptional. Great value for money. Satisfied with my purchase, although I noticed a small issue with the packaging. Great value for money. Satisfied with my purchase, although I noticed a small issue with the packaging.",
     },
@@ -27,6 +29,8 @@ export default function AllReview() {
       username: "Maria Gonzalez",
       date: "2024-11-15",
       rating: 5,
+      reviewImage:
+        "https://s3.amazonaws.com/libapps/accounts/1928/images/Review.jpg",
       reviewText:
         "Absolutely loved it! Will purchase again. The design and quality are fantastic, and the price is fair.Great value for money. Satisfied with my purchase, although I noticed a small issue with the packaging.Great value for money. Satisfied with my purchase, although I noticed a small issue with the packaging.",
     },
@@ -40,6 +44,8 @@ export default function AllReview() {
     {
       username: "Emily Davis",
       date: "2024-11-13",
+      reviewImage:
+        "https://s3.amazonaws.com/libapps/accounts/1928/images/Review.jpg",
       rating: 2,
       reviewText:
         "Not what I expected. Quality could be better. I was disappointed by the lack of attention to detail.Great value for money. Satisfied with my purchase, although I noticed a small issue with the packaging.Great value for money. Satisfied with my purchase, although I noticed a small issue with the packaging.",
@@ -62,6 +68,7 @@ export default function AllReview() {
           date={review.date}
           rating={review.rating}
           reviewText={review.reviewText}
+          reviewImage={review?.reviewImage}
         />
       ))}
     </div>

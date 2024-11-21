@@ -20,11 +20,10 @@ const DashboardTopSlider = () => {
       image:
         "https://i.ibb.co.com/Trn6MXF/Black-and-Yellow-Simple-Modern-Special-Offer-Sale-Banner.png",
     },
- 
   ];
 
   return (
-    <div className="relative w-full shadow-md rounded-md h-[150px] sm:h-[250px] overflow-hidden">
+    <div className="relative w-full scroll-animation shadow-md rounded-md h-[150px] sm:h-[250px] overflow-hidden">
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 3000, disableOnInteraction: false }}

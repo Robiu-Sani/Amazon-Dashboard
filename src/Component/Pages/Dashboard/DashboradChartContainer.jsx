@@ -65,7 +65,7 @@ const DashboradChartContainer = () => {
           ].map((card, index) => (
             <div
               key={index}
-              className={`rounded-lg shadow-md ${card.color} text-white`}
+              className={`rounded-lg scroll-animation shadow-md ${card.color} text-white`}
             >
               <div className="p-3 border-b border-[#dfdfdf4b]">
                 <h4 className="text-lg font-semibold">{card.title}</h4>

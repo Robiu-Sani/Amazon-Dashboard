@@ -114,7 +114,7 @@ const EmployesOftheYear = () => {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full scroll-animation">
       <div className="pb-2">
         <strong>Employ of the year</strong>
       </div>

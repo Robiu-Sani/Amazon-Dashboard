@@ -1,8 +1,14 @@
 import { MdStar, MdFavorite } from "react-icons/md";
 
-export default function ReviewCard({ username, date, rating, reviewText }) {
+export default function ReviewCard({
+  username,
+  reviewImage,
+  date,
+  rating,
+  reviewText,
+}) {
   return (
-    <div className="w-full grid  p-4 grid-cols-1 sm:grid-cols-3 gap-4 bg-white rounded-md shadow-sm">
+    <div className="w-full grid scroll-animation p-4 grid-cols-1 sm:grid-cols-3 gap-4 bg-white rounded-md shadow-sm">
       {/* User Section */}
       <div className="w-full flex justify-start items-start">
         <div className="flex justify-start items-center gap-3">
@@ -41,6 +47,10 @@ export default function ReviewCard({ username, date, rating, reviewText }) {
           </div>
           <MdFavorite className="text-2xl text-red-500 cursor-pointer hover:scale-110 transition-transform" />
         </div>
+
+        {reviewImage && (
+          <img src={reviewImage} alt="review image" className="max-w-[350px]" />
+        )}
 
         {/* Review Text */}
         <p className="text-gray-600 leading-relaxed">

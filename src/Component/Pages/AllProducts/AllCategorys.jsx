@@ -255,7 +255,7 @@ export default function AllCategorys() {
                 `/category/${item.name.replace(/\s+/g, "-").toLowerCase()}`
               )
             }
-            className="w-full cursor-pointer p-3 flex  gap-2 justify-start items-center overflow-hidden rounded-md bg-white shadow-md hover:shadow-lg hover:scale-105 transition-transform"
+            className="w-full scroll-animation cursor-pointer p-3 flex  gap-2 justify-start items-center overflow-hidden rounded-md bg-white shadow-md hover:shadow-lg hover:scale-105 transition-transform"
           >
             <img
               src={
